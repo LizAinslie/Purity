@@ -1,5 +1,5 @@
-$border-radius-big: 0.5rem;
-$border-radius-md: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-sm: 0.25rem;
 
 $layer-modal: 2000;
 
@@ -8,9 +8,17 @@ $light-200: #e5e7e9;
 $light-300: #d7dbdd;
 $light-600: #a6acaf;
 
+$dark-100: #17202A;
+$dark-200: #1C2833;
+$dark-300: #212F3D;
+
 $background-light-base: $light-100;
 $background-light-section: $light-200;
 $background-light-toolbar: $light-300;
+
+$background-dark-base: $dark-300;
+$background-dark-section: $dark-200;
+$background-dark-toolbar: $dark-100;
 
 $background-button-secondary: $light-600;
 

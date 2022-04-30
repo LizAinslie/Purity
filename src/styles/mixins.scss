@@ -1,0 +1,11 @@
+@mixin respectParentBorderRadius($borderRadiusValue: inherit) {
+  &:first-child {
+    border-top-left-radius: $borderRadiusValue;
+    border-top-right-radius: $borderRadiusValue;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: $borderRadiusValue;
+    border-bottom-right-radius: $borderRadiusValue;
+  }
+}

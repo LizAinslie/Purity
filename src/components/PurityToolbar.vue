@@ -1,14 +1,17 @@
 <script setup lang='ts'>
-const props = defineProps({
-	vertical: {
-		type: Boolean,
-		default: false,
-	},
-	dark: {
-		type: Boolean,
-		default: false,
-	},
+import { reactive } from 'vue';
+
+export interface ToolbarProps {
+	dark?: boolean;
+	vertical?: boolean;
+}
+
+const props = withDefaults(defineProps<ToolbarProps>(), {
+	dark: false,
+	vertical: false,
 });
+
+const { vertical, dark } = reactive(props);
 </script>
 
 <template>
@@ -22,7 +25,8 @@ const props = defineProps({
 
 .toolbar {
 	&.dark {
-		// todo: dark styles
+		background-color: $background-dark-toolbar;
+		color: #fff;
 	}
 
 	&.vertical {

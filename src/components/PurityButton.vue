@@ -1,22 +1,23 @@
 <script setup lang='ts'>
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
+
+export interface ButtonProps {
+	faint?: boolean;
+	icon?: boolean;
+	link?: string;
+}
 
 const emit = defineEmits(["click"])
-const props = defineProps({
-	link: String,
-	faint: {
-		type: Boolean,
-		default: false,
-	},
-	icon: {
-		type: Boolean,
-		default: false,
-	}
+const props = withDefaults(defineProps<ButtonProps>(), {
+	faint: false,
+	icon: false,
 });
 
+const { link, faint, icon } = reactive(props);
+
 const className = computed(() => ({
-	faint: props.faint,
-	icon: props.icon,
+	faint,
+	icon,
 }));
 
 function click(e: MouseEvent) {
@@ -25,10 +26,10 @@ function click(e: MouseEvent) {
 </script>
 
 <template>
-	<a v-if='link' :href='link' @click='click' class='button' :class='className'>
+	<a v-if='link' :href='link' @click.stop='click' class='button' :class='className'>
 		<slot />
 	</a>
-	<button v-else @click='click' class='button' :class='className'>
+	<button v-else @click.stop='click' class='button' :class='className'>
 		<slot />
 	</button>
 </template>
@@ -42,7 +43,7 @@ function click(e: MouseEvent) {
 	background-color: rgba($background-button-secondary, var(--bg-opacity));
 	padding: $padding-2 $padding-3;
 	appearance: none;
-	border-radius: $border-radius-md;
+	border-radius: $border-radius-sm;
 	border: none;
 	color: inherit;
 	text-decoration: none;
